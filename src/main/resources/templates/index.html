@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Anime Fan Community</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+<body>
+<div th:replace="fragments/header :: header" th:with="page='home'"></div>
+
+<main class="slider-container">
+    <div class="slider-overlay">
+        <h1 class="greeting" th:text="'Welcome, ' + ${#authentication.name} + '!'">Welcome, Guest!</h1>
+        <p class="anime-quote" id="animeQuote">“To be the best, you must challenge the best.”</p>
+        <a href="/discussion" class="btn btn-outline-light dive-btn">Dive Into Discussion</a>
+    </div>
+
+    <div class="wallpaper-slider">
+        <img src="/images/wallpaper1.jpg" class="wallpaper active" alt="Solo Leveling">
+        <img src="/images/wallpaper2.jpg" class="wallpaper" alt="Itachi">
+        <img src="/images/wallpaper3.jpg" class="wallpaper" alt="Goku">
+        <img src="/images/wallpaper4.jpg" class="wallpaper" alt="Gojo Satoru">
+        <img src="/images/wallpaper5.jpg" class="wallpaper" alt="One Piece">
+    </div>
+</main>
+
+<div th:replace="fragments/footer :: footer"></div>
+<script th:src="@{/js/index.js}"></script>
+</body>
+</html>

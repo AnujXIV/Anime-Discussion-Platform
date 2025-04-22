@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>User Profile - Anime Fan Community</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/profile.css}">
+</head>
+<body>
+
+<!-- Reuse header -->
+<div th:replace="fragments/header :: header" th:with="page='profile'"></div>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <div class="card shadow p-4">
+        <div class="row align-items-center">
+          <!-- Profile Picture -->
+          <div class="col-md-3 text-center mb-3 mb-md-0">
+            <img th:src="@{/images/default_profile.png}" class="rounded-circle img-fluid" alt="User Image" style="max-width: 150px;">
+          </div>
+
+          <!-- Profile Info -->
+          <div class="col-md-9">
+            <h3 th:text="'@' + ${#authentication.name}" class="fw-bold"></h3>
+            <p class="text-muted mb-1" th:text="'Email: ' + ${user.email}">Email: user@example.com</p>
+            <p class="text-muted mb-1" th:text="'Role: ' + ${user.role}">Role: USER</p>
+            <a href="/logout" class="btn btn-danger mt-3">Logout</a>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <hr class="my-4">
+
+        <!-- User's Discussions -->
+        <div>
+          <h5 class="mb-3">Recent Discussions</h5>
+          <div th:if="${user.discussions != null and !user.discussions.isEmpty()}">
+            <ul class="list-group">
+              <li th:each="discussion : ${user.discussions}" class="list-group-item d-flex justify-content-between align-items-center">
+                <span th:text="${discussion.topic}">Discussion Title</span>
+                <span th:text="${#dates.format(discussion.timestamp, 'dd MMM yyyy HH:mm')}" class="badge bg-secondary rounded-pill">Timestamp</span>
+              </li>
+            </ul>
+          </div>
+          <div th:if="${user.discussions == null or user.discussions.isEmpty()}" class="text-muted">
+            No discussions started yet.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div th:replace="fragments/footer :: footer"></div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

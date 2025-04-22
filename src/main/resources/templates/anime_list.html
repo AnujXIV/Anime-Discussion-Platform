@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anime List</title>
+  <link rel="stylesheet" th:href="@{/css/header.css}">
+  <link rel="stylesheet" th:href="@{/css/anime_list.css}">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<div th:replace="~{fragments/header :: header(page='anime')}"></div>
+
+<main class="container px-3 py-4">
+  <div class="header-row">
+    <h2 class="text-white mb-0">Anime Collection</h2>
+    <input id="searchInput" class="form-control" placeholder="Search anime...">
+  </div>
+
+  <div id="genreTags"></div>
+
+
+  <div id="loader" class="text-center my-4">
+    <div class="spinner-border text-light" role="status"></div>
+  </div>
+
+  <div id="animeGrid" class="grid-container"></div>
+
+  <nav class="mt-4 d-flex justify-content-center">
+    <ul id="pagination" class="pagination"></ul>
+  </nav>
+
+</main>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+<script th:src="@{/js/anime_list.js}"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<header th:fragment="header">
+    <nav class="navbar navbar-expand-lg custom-navbar">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav d-flex flex-row gap-4">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/index}" th:classappend="${page == 'home'} ? 'active'">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/anime}" th:classappend="${page == 'anime'} ? 'active'">ANIME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/discussions}" th:classappend="${page == 'discussion'} ? 'active'">DISCUSSION</a>
+                    </li>
+                    <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
+                        <a class="nav-link" th:href="@{/logout}">LOGOUT</a>
+                    </li>
+                    <li class="nav-item" th:if="${#authorization.expression('!isAuthenticated()')}">
+                        <a class="nav-link" th:href="@{/login}">LOGIN</a>
+                    </li>
+                    <li class="nav-item" th:if="${#authorization.expression('!isAuthenticated()')}">
+                        <a class="nav-link" th:href="@{/register}">REGISTER</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+</body>
+</html>

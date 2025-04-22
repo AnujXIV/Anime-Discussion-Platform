@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard - Anime Fan Community</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap & FontAwesome -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" th:href="@{/css/admin_dashboard.css}">
+</head>
+<body class="bg-light">
+
+<!-- Admin Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 py-3">
+  <span class="navbar-brand mb-0 h4">Admin Dashboard</span>
+  <div class="ms-auto d-flex align-items-center">
+    <span class="text-white me-3" th:text="'Welcome, ' + ${#authentication.principal.username}"></span>
+    <a href="/logout" class="btn btn-outline-light btn-sm">Logout</a>
+  </div>
+</nav>
+
+<main class="container mt-5 mb-4">
+  <h2 class="mb-4 text-center">Admin Controls</h2>
+
+  <!-- Users Section -->
+  <section class="mb-5">
+    <h4>Manage Users</h4>
+    <table class="table table-striped">
+      <thead class="table-dark">
+      <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Change Role</th>
+      </tr>
+      </thead>
+      <tbody id="userTableBody">
+      <!-- Populated via JS -->
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Anime Section -->
+  <section class="mb-5">
+    <h4>Manage Anime</h4>
+    <button class="btn btn-outline-primary mb-3" data-bs-toggle="modal" data-bs-target="#animeModal">
+      <i class="fas fa-plus"></i> Add Anime
+    </button>
+    <div class="row g-3" id="animeList"></div>
+  </section>
+
+  <!-- Character Section -->
+  <section class="mb-5">
+    <h4>Manage Characters</h4>
+    <button class="btn btn-outline-primary mb-3" data-bs-toggle="modal" data-bs-target="#characterModal">
+      <i class="fas fa-plus"></i> Add Character
+    </button>
+    <div class="row g-3" id="characterList"></div>
+  </section>
+
+  <!-- Discussion Section -->
+  <section>
+    <h4>Manage Discussions</h4>
+    <button class="btn btn-outline-success mb-3" onclick="createDiscussion()">Create Discussion</button>
+    <ul class="list-group" id="discussionList">
+      <!-- Populated via JS -->
+    </ul>
+  </section>
+</main>
+
+<!-- Anime Modal -->
+<div class="modal fade" id="animeModal" tabindex="-1" aria-labelledby="animeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form class="modal-content" id="animeForm">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Anime</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input class="form-control mb-2" name="name" placeholder="Name" required>
+        <textarea class="form-control mb-2" name="description" placeholder="Description"></textarea>
+        <input class="form-control mb-2" name="genres" placeholder="Genres">
+        <input class="form-control mb-2" name="status" placeholder="Status">
+        <input class="form-control mb-2" name="rating" placeholder="Rating">
+        <input class="form-control mb-2" name="studios" placeholder="Studios">
+        <input class="form-control mb-2" name="origin" placeholder="Origin">
+        <input class="form-control mb-2" name="pic" placeholder="Image URL">
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" type="submit">Save Anime</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Character Modal -->
+<div class="modal fade" id="characterModal" tabindex="-1" aria-labelledby="characterModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form class="modal-content" id="characterForm">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Character</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input class="form-control mb-2" name="name" placeholder="Name" required>
+        <textarea class="form-control mb-2" name="description" placeholder="Description"></textarea>
+        <input class="form-control mb-2" name="age" placeholder="Age" type="number">
+        <input class="form-control mb-2" name="birthdate" placeholder="Birthdate">
+        <input class="form-control mb-2" name="height" placeholder="Height">
+        <input class="form-control mb-2" name="pic" placeholder="Image URL">
+        <select class="form-control" name="animeId">
+          <!-- Populated by JS -->
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" type="submit">Save Character</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Bootstrap Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/js/admin_dashboard.js}" defer></script>
+</body>
+</html>

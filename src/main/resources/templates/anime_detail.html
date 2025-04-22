@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Anime Detail</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- CSS + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/header.css}">
+  <link rel="stylesheet" th:href="@{/css/anime_detail.css}">
+
+</head>
+<body class="bg-dark text-light">
+
+<div th:replace="~{fragments/header :: header(page='anime')}"></div>
+
+<main class="container py-5" id="animeDetailPage">
+  <!-- Back Button -->
+  <div class="mb-4">
+    <a href="/anime" class="btn btn-sm btn-outline-light">
+      <i class="fas fa-arrow-left me-2"></i> Back
+    </a>
+  </div>
+
+  <!-- Loader -->
+  <div id="animeLoader" class="row g-4 placeholder-glow">
+    <div class="col-md-5">
+      <div class="bg-secondary rounded w-100" style="height: 480px;"></div>
+    </div>
+    <div class="col-md-7">
+      <div class="placeholder w-75 mb-3 rounded bg-secondary" style="height: 30px;"></div>
+      <div class="placeholder w-100 mb-2 rounded bg-secondary" style="height: 20px;"></div>
+      <div class="placeholder w-100 mb-2 rounded bg-secondary" style="height: 20px;"></div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div id="animeContent" class="d-none">
+    <div class="row g-5 align-items-start mb-5">
+      <div class="col-md-5">
+        <img id="animeImg" class="img-fluid rounded shadow border" alt="Anime Poster">
+      </div>
+
+      <div class="col-md-7">
+        <h2 id="animeTitle" class="fw-bold mb-3">Loading...</h2>
+
+        <!-- Info List -->
+        <div class="anime-info-list mb-3">
+          <div><i class="fas fa-star text-warning me-2"></i><strong>Rating:</strong> <span id="animeRating"></span></div>
+          <div><i class="fas fa-circle-info text-info me-2"></i><strong>Status:</strong> <span id="animeStatus"></span></div>
+          <div><i class="fas fa-tags text-success me-2"></i><strong>Genres:</strong> <span id="animeGenres"></span></div>
+          <div><i class="fas fa-industry text-primary me-2"></i><strong>Studios:</strong> <span id="animeStudios"></span></div>
+          <div><i class="fas fa-globe text-secondary me-2"></i><strong>Origin:</strong> <span id="animeOrigin"></span></div>
+        </div>
+
+        <!-- Description -->
+        <p id="animeDesc" class="text-light">
+          <span id="descText"></span>
+          <a href="javascript:void(0)" id="descToggle" class="text-info ms-2 d-none">See more</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Characters -->
+    <section id="charactersSection" class="mb-5 d-none">
+      <h4 class="mb-3"><i class="fas fa-users me-2 text-warning"></i>Characters</h4>
+      <div class="row g-3" id="characterList"></div>
+    </section>
+
+    <!-- Discussions -->
+    <section id="discussionsSection" class="mb-5 d-none">
+      <h4 class="mb-3"><i class="fas fa-comments me-2 text-success"></i>Discussions</h4>
+      <div class="list-group" id="discussionList"></div>
+    </section>
+  </div>
+</main>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/anime_detail.js"></script>
+</body>
+</html>
