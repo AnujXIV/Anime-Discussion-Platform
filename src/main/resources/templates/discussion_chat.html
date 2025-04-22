@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Discussion Chat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/chat.css}">
+</head>
+<body class="bg-dark text-light">
+<div th:replace="~{fragments/header :: header(page='discussion')}"></div>
+
+<!-- Hidden input to hold discussion ID -->
+<input type="hidden" name="discussionId" th:value="${discussionId}"/>
+
+<!-- Header -->
+<nav class="navbar navbar-dark bg-black px-3">
+    <a th:href="@{/discussions}" class="btn btn-outline-light">
+        <i class="bi bi-arrow-left"></i> Back to Discussions
+    </a>
+    <h5 class="text-light fw-bold mb-3"><i class="bi bi-chat-text"></i>Live Discussion</h5>
+</nav>
+
+<!-- Chat Layout -->
+<main class="container py-4">
+    <div class="card bg-black border-light shadow-lg">
+        <div class="card-header d-flex align-items-center justify-content-between bg-dark border-bottom">
+            <h5 class="mb-0">
+                <i class="bi bi-chat-dots me-2 text-primary"></i>
+                <span th:text="${discussionTitle}">Chat Topic</span>
+            </h5>
+            <span class="badge text-bg-primary">Live</span>
+        </div>
+
+        <!-- Chat Box -->
+        <div id="chat-box" class="chat-box p-4 overflow-auto bg-dark" style="height: 480px;">
+            <!-- Messages will be injected here -->
+        </div>
+
+        <!-- Message Form -->
+        <div class="card-footer bg-dark border-top">
+            <form id="messageForm" class="d-flex align-items-center gap-3">
+                <input type="text" class="form-control" name="message" placeholder="Type your message..." required>
+                <button type="submit" class="btn btn-outline-success">
+                    <i class="bi bi-send"></i> Send
+                </button>
+            </form>
+        </div>
+    </div>
+</main>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.6.1/dist/sockjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+<script th:src="@{/js/discussion_chat.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

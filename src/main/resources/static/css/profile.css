@@ -1,0 +1,16 @@
+body {
+    background-color: #f7f9fc;
+}
+
+.card {
+    border: none;
+    border-radius: 1rem;
+}
+
+h3 {
+    font-weight: 600;
+}
+
+.list-group-item {
+    font-size: 1rem;
+}

@@ -1,0 +1,16 @@
+.character-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    font-size: 1rem;
+}
+
+img {
+    max-height: 480px;
+    object-fit: cover;
+}
+
+a.link-light:hover {
+    color: #ffc107;
+    text-decoration: underline;
+}

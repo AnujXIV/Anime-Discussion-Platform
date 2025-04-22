@@ -1,0 +1,97 @@
+body {
+    background-color: #0e0e0e;
+    color: #f1f1f1;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2 {
+    color: #ffffff;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+#animeFilter {
+    min-width: 200px;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
+}
+
+.card-img-top {
+    object-fit: cover;
+    height: 280px;
+    width: 100%;
+    border-bottom: 1px solid #343a40;
+}
+
+.card-title {
+    color: #f8f9fa;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.card-text {
+    font-size: 0.95rem;
+    color: #ced4da;
+    margin-bottom: 1rem;
+}
+
+.card ul {
+    padding-left: 0;
+}
+
+.card li {
+    font-size: 0.85rem;
+    color: #adb5bd;
+    margin-bottom: 0.3rem;
+}
+
+.btn-outline-light,
+.btn-light {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-outline-light:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+#pagination {
+    margin-top: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+    .card-img-top {
+        height: 200px;
+    }
+
+    .card-title {
+        font-size: 1rem;
+    }
+
+    .card-text,
+    .card li {
+        font-size: 0.85rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .card-img-top {
+        height: 180px;
+    }
+
+    #animeFilter {
+        width: 100%;
+        margin-top: 10px;
+    }
+}

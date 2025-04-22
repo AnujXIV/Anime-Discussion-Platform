@@ -1,0 +1,40 @@
+.chat-box {
+    background-color: #0d1117;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+.chat-box .message-wrapper {
+    margin-bottom: 1rem;
+}
+
+.chat-box .message-wrapper .avatar {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 0.75rem;
+}
+
+.chat-box .message {
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    background-color: #21262d;
+    color: #fff;
+    word-wrap: break-word;
+    max-width: 85%;
+}
+
+.chat-box .meta {
+    font-size: 0.75rem;
+    color: #a1a1a1;
+}
+
+#chat-box {
+    max-height: 500px;
+    overflow-y: auto;
+    padding-right: 10px;
+    border: 1px solid #444;
+    border-radius: 8px;
+    background: #0f0f0f;
+}

@@ -1,0 +1,56 @@
+body {
+    background-color: #0e0e0e;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+img {
+    max-height: 500px;
+    object-fit: cover;
+}
+
+.anime-info-list div {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+#animeGenres .badge {
+    background-color: #444c56;
+    margin-right: 6px;
+    padding: 6px 10px;
+    font-size: 0.8rem;
+    border-radius: 6px;
+}
+
+#characterList .card {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    transition: transform 0.3s ease;
+}
+
+#characterList .card:hover {
+    transform: translateY(-4px);
+    border-color: #4e9af1;
+}
+
+#characterList .card-img-top {
+    height: 220px;
+    object-fit: cover;
+}
+
+#discussionList .list-group-item {
+    background-color: #1c1c1c;
+    color: #fff;
+    border: 1px solid #333;
+    transition: all 0.2s ease;
+}
+
+#discussionList .list-group-item:hover {
+    background-color: #252525;
+    border-left: 4px solid #4e9af1;
+}
+
+#descToggle {
+    cursor: pointer;
+    font-weight: 500;
+}
